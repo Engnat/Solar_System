@@ -1,3 +1,4 @@
+*{padding: 0; margin: 0;}
 html , body , #starsGroup {height: 100%; min-height: 100; overflow:hidden;}
 body{
   position: relative;
@@ -17,4 +18,27 @@ body{
   border-radius: 50%;
   box-shadow: 0 0 10px 10px rgba(241, 183, 20, 0.63);
   background: rgba(241,231,103,1); background: radial-gradient(ellipse at center, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+}
+ul{list-style: none;}
+
+.planets{
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  transform: translate(-50% , -50%);
+  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+}
+
+.planet{
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #ABC;
+}
+
+.planet:first-child{
+  position:
 }
