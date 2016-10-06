@@ -1,0 +1,20 @@
+html , body , #starsGroup {height: 100%; min-height: 100; overflow:hidden;}
+body{
+  position: relative;
+  background: rgba(3,59,155,1);
+  background-image: radial-gradient(ellipse at center, rgba(3,59,155,1) 0%, rgba(14,88,128,1) 39%, rgba(3,3,3,1) 100%);
+}
+
+#sun{
+  display:block;
+  position:absolute;;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  margin:0 auto;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 10px rgba(241, 183, 20, 0.63);
+  background: rgba(241,231,103,1); background: radial-gradient(ellipse at center, rgba(241,231,103,1) 0%, rgba(254,182,69,1) 100%);
+}
