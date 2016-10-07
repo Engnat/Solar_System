@@ -12,6 +12,7 @@ var Planet = function(){
       name: planets_names.pop(),//esta instruccion toma el último elemento del arreglo y se lo asigna a name
       dom_orbit: null,//variable que almacena el elemento dom de planet_orbit
       dom_planet: null,//variable que almacena el elemento dom de planet_body
+      dom_sun : null,
       rotation_process_id : null,
       //Metodos
       getSize : function(){//transforma los valores en pixeles
@@ -26,6 +27,7 @@ var Planet = function(){
       pushDOMElement : function(dom_parent){//creamos los elementos html desde el javascript
         var planet_orbit = document.createElement("li");//variable para crear elementos planeta li
         var planet_body = document.createElement("span");//vartiable para crear elementos planeta span
+        var sun_body = document.createElement("span");
         planet_body.setAttribute("class" , "planet");//asignamos la clase planet al elemento planeta span
         planet_orbit.appendChild(planet_body);//el elemento span es hijo del elemento li
         planet_body.style.width = this.getSize();// asignamos ancho al elemento
@@ -44,6 +46,7 @@ var Planet = function(){
         dom_parent.appendChild(planet_orbit);
         this.dom_orbit = planet_orbit;//guardo en las variales los elementos dom planet_orbit
         this.dom_planet = planet_body;//guardo en las variales los elementos dom planet_body
+        this.dom_sun = sun_body;
       },
       startRotation : function(){
           var self = this;//guarda el objeto que estoy creando "es planeta porque esta dentro planeta" siempre se define a nivel de mi funcion
@@ -56,6 +59,18 @@ var Planet = function(){
             }
             self.dom_orbit.style.transform = "rotate("+self.orbit_position+"deg)";
           },500/freq);
+      },
+      AddEventHandlerToStop : function(){//Definiendo metodo par detener planeta
+        var self = this;
+        this.dom_planet.addEventListener("mouseover", function(){
+            clearInterval(self.rotation_process_id);
+        });
+      },
+      AddEventHandlerToSunMovePlanets : function(){//Definiendo metodo par detener planeta
+        var self = this;
+        this.dom_sun.addEventListener("mouseover", function(){
+            startRotation(self.rotation_process_id);//duda
+        });
       },
   };
 };
@@ -71,5 +86,9 @@ document.addEventListener("DOMContentLoaded" , function(){
   for(var planet_pos in planets){//recorre todos los planetas
     planets[planet_pos].pushDOMElement(planetary_system);//pinta los planetas
     planets[planet_pos].startRotation();
+    planets[planet_pos].AddEventHandlerToStop();
+
   }
+
+
 });
